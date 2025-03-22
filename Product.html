@@ -3,50 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Products</title>
     <link rel="stylesheet" href="product_.css">
 </head>
+
+<header>
+    <h1>Our Products</h1>
+</header>
 <body>
-    <header>
-        <h1>Our Products</h1>
-    </header>
     <nav>
         <a href="Home.html">Home</a>
         <a href="Product.html">Products</a>
         <a href="Contact.html">Contact Us</a>
     </nav>
-    
-    <div class="Product-grid">
+    <div class="product-grid">
         <div class="product">
-            <img src="picture/cap.png" alt="CAP">
+            <img src="picture/cap.png" alt="cap">
             <h3>CAP</h3>
             <p>৳700</p>
-            <button onclick="showAlert('CAP','৳700')">Buy Now</button>
-
+            <button onclick="showAlert('CAP', '৳700')">Buy Now</button>
         </div>
         <div class="product">
-            <img src="picture/bag.png" alt="BAG">
+            <img src="picture/bag.png" alt="bag">
             <h3>BAG</h3>
             <p>৳1500</p>
-            <button onclick="showAlert('BAG','৳1500')">Buy Now</button>
-
+            <button onclick="showAlert('BAG', '৳1500')">Buy Now</button>
         </div>
         <div class="product">
-            <img src="picture/shoes.png" alt="SHOES">
-            <h3>Shoes</h3>
-            <p>৳2590</p>
-            <button onclick="showAlert('Shoes','৳2590')">Buy Now</button>
-
+            <img src="picture/shoes.png" alt="shoes">
+            <h3>SHOES</h3>
+            <p>৳2890</p>
+            <button onclick="showAlert('SHOES', '৳2890')">Buy Now</button>
         </div>
-
     </div>
     <script>
-        function showAlert(productName, price){
-            alert(`You have selected:  ৳{productName}\nPrice: ৳{price}\nProceed to checkout?`);
-        }
+    function showAlert(productName, price) {
+        alert(`You have selected: ${productName}\nPrice: ${price}\nProceed to checkout!`);
+    }
     </script>
     <footer>
-        <p>&copy; 2025 (Redwan Haq Rohan, ID: )</p>
+        <p>&copy; 2025 (Redwan Haq Rohan ID:) . All rights reserved.</p>
     </footer>
 </body>
 </html>
