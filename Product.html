@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="product_.css">
+</head>
+<body>
+    <header>
+        <h1>Our Products</h1>
+    </header>
+    <nav>
+        <a href="Home.html">Home</a>
+        <a href="Product.html">Products</a>
+        <a href="Contact.html">Contact Us</a>
+    </nav>
+    
+    <div class="Product-grid">
+        <div class="product">
+            <img src="picture/cap.png" alt="CAP">
+            <h3>CAP</h3>
+            <p>৳700</p>
+            <button onclick="showAlert('CAP','৳700')">Buy Now</button>
+
+        </div>
+        <div class="product">
+            <img src="picture/bag.png" alt="BAG">
+            <h3>BAG</h3>
+            <p>৳1500</p>
+            <button onclick="showAlert('BAG','৳1500')">Buy Now</button>
+
+        </div>
+        <div class="product">
+            <img src="picture/shoes.png" alt="SHOES">
+            <h3>Shoes</h3>
+            <p>৳2590</p>
+            <button onclick="showAlert('Shoes','৳2590')">Buy Now</button>
+
+        </div>
+
+    </div>
+    <script>
+        function showAlert(productName, price){
+            alert(`You have selected:  ৳{productName}\nPrice: ৳{price}\nProceed to checkout?`);
+        }
+    </script>
+    <footer>
+        <p>&copy; 2025 (Redwan Haq Rohan, ID: )</p>
+    </footer>
+</body>
+</html>
