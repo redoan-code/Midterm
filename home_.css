@@ -64,12 +64,15 @@ button:hover{
 }
 
 img{
+    background-image: url('picture/onlline\ stor.png');
+    height: 500px;
     width: 100%;
+    /* width: 100%;
     max-width: 700px;
     height: auto;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; */
 }
 
 footer{
