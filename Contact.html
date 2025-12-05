@@ -1,37 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="contact_.css">
+    <meta name="description" content="Contact Redwan Shop - Get in touch with us for any inquiries">
+    <title>Contact Us - Redwan Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Contact Page Specific Styles */
+        .page-header {
+            padding: 120px 0 60px;
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: all var(--transition-base);
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .success-message {
+            background: var(--color-success);
+            color: white;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            margin-bottom: 1rem;
+            display: none;
+            animation: fadeInDown 0.5s ease;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all var(--transition-base);
+        }
+
+        .social-link:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: var(--shadow-glow);
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
-<header>
-    <h1>Contact Us</h1>
-</header>
 <body>
-    <nav>
-        <a href="Home.html">Home</a>
-        <a href="Product.html">Products</a>
-        <a href="Contact.html">Contact Us</a>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="Home.html" class="navbar-brand">
+                <div class="brand-logo-icon">EF</div>
+                <span>EverFit</span>
+            </a>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="Home.html" class="navbar-link">Home</a></li>
+                <li class="dropdown">
+                    <div class="dropdown-toggle">Categories</div>
+                    <div class="dropdown-menu">
+                        <a href="Product.html?category=mens" class="dropdown-item">Men's Fashion</a>
+                        <a href="Product.html?category=womens" class="dropdown-item">Women's Fashion</a>
+                        <a href="Product.html?category=accessories" class="dropdown-item">Accessories</a>
+                        <a href="Product.html?category=footwear" class="dropdown-item">Footwear</a>
+                        <a href="Product.html?category=bags" class="dropdown-item">Bags & Luggage</a>
+                        <a href="Product.html?category=sale" class="dropdown-item">Sale Items</a>
+                    </div>
+                </li>
+                <li><a href="Product.html" class="navbar-link">Shop</a></li>
+                <li><a href="Contact.html" class="navbar-link active">Contact</a></li>
+                <li>
+                    <div class="cart-icon" id="cartIcon">
+                        🛒
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </nav>
-    <div class="container">
-        <div>
-            <h2>Contact</h2>
-            <p>Email: contact@onlinestore.com</p>
-            <p>Phone: 01703104939</p>
-            <h3>Send massages</h3>
-            <button onclick="showAlert()">Send Message</button>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Get In Touch</h1>
+        <p>We'd love to hear from you. Send us a message!</p>
+    </div>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <!-- Contact Info Cards -->
+            <div class="grid grid-3" style="margin-bottom: 3rem;">
+                <div class="contact-info-card animate-fade-in-up stagger-1">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email Us</h3>
+                    <p style="color: var(--color-gray);">contact@redwanshop.com</p>
+                    <p style="color: var(--color-gray);">support@redwanshop.com</p>
+                </div>
+                <div class="contact-info-card animate-fade-in-up stagger-2">
+                    <div class="contact-icon">📱</div>
+                    <h3>Call Us</h3>
+                    <p style="color: var(--color-gray);">+880 1703104939</p>
+                    <p style="color: var(--color-gray);">Mon-Fri: 9AM - 6PM</p>
+                </div>
+                <div class="contact-info-card animate-fade-in-up stagger-3">
+                    <div class="contact-icon">📍</div>
+                    <h3>Visit Us</h3>
+                    <p style="color: var(--color-gray);">123 Fashion Street</p>
+                    <p style="color: var(--color-gray);">Dhaka, Bangladesh</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-container">
+                <div class="animate-slide-in-left">
+                    <h2>Send Us a Message</h2>
+                    <p style="color: var(--color-gray); margin-bottom: 2rem;">
+                        Have a question or feedback? Fill out the form and we'll get back to you as soon as possible.
+                    </p>
+
+                    <div class="contact-form">
+                        <div class="success-message" id="successMessage">
+                            ✓ Message sent successfully! We'll get back to you soon.
+                        </div>
+
+                        <form id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Subject</label>
+                                <input type="text" class="form-control" id="subject" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="animate-slide-in-right">
+                    <h2>Why Contact Us?</h2>
+                    <p style="color: var(--color-gray); margin-bottom: 2rem;">
+                        We're here to help with any questions or concerns you may have.
+                    </p>
+
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div style="display: flex; gap: 1rem;">
+                            <div style="font-size: 2rem;">💬</div>
+                            <div>
+                                <h4>Customer Support</h4>
+                                <p style="color: var(--color-gray);">Our team is ready to assist you with any inquiries
+                                </p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem;">
+                            <div style="font-size: 2rem;">🎁</div>
+                            <div>
+                                <h4>Order Assistance</h4>
+                                <p style="color: var(--color-gray);">Need help with your order? We're here for you</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem;">
+                            <div style="font-size: 2rem;">💡</div>
+                            <div>
+                                <h4>Product Information</h4>
+                                <p style="color: var(--color-gray);">Questions about our products? Just ask!</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem;">
+                            <div style="font-size: 2rem;">🤝</div>
+                            <div>
+                                <h4>Partnership Opportunities</h4>
+                                <p style="color: var(--color-gray);">Interested in collaborating? Let's talk</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Follow Us</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link" title="Instagram">📷</a>
+                            <a href="#" class="social-link" title="Facebook">👍</a>
+                            <a href="#" class="social-link" title="Twitter">🐦</a>
+                            <a href="#" class="social-link" title="Pinterest">📌</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2>Shopping Cart</h2>
+                <button class="cart-close" onclick="closeCartModal()">×</button>
+            </div>
+            <div class="cart-modal-body" id="cartModalBody">
+                <!-- Cart items will be inserted here -->
+            </div>
+            <div class="cart-modal-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="cart-total-amount" id="cartTotalAmount">৳0</span>
+                </div>
+                <button class="cart-checkout-btn" onclick="goToCheckout()">Proceed to Checkout</button>
+            </div>
         </div>
     </div>
-    <script>
-    function showAlert() {
-        alert('Your massages is sent');
-    }
-    </script>
-    <footer>
-        <p>&copy; 2025 (Redoan Haq, ID:2220086) All Rights Reserved</p>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Redwan</h4>
+                    <p style="color: var(--color-gray);">Premium fashion brand dedicated to bringing you the finest
+                        clothing and accessories.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="Home.html">Home</a></li>
+                        <li><a href="Product.html">Shop</a></li>
+                        <li><a href="Contact.html">Contact</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Pinterest</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Redwan Shop (Redoan Haq, ID:2220086) All Rights Reserved</p>
+            </div>
+        </div>
     </footer>
+
+    <script src="products-data.js"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>
