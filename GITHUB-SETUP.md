@@ -3,7 +3,7 @@
 ## ✅ What's Already Done
 
 - ✅ Git configured with your name: "Izaj Ahmed"
-- ✅ Git remote changed to: `https://github.com/Izaj-ahmed/Midterm.git`
+- ✅ Git remote changed to: `https://github.com/redoan-code/Midterm.git`
 - ✅ All code committed locally
 - ✅ Ready to push!
 

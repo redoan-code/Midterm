@@ -279,6 +279,9 @@
                 <h3>No products found</h3>
                 <p>Try adjusting your filters</p>
             </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination"></div>
         </div>
     </section>
 
@@ -302,12 +305,51 @@
         </div>
     </div>
 
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>EverFit</h2>
+            <button class="sidebar-close" onclick="closeSidebar()">×</button>
+        </div>
+        <div class="sidebar-content">
+            <div class="sidebar-section">
+                <h3>About EverFit</h3>
+                <p>Your premium destination for fashion and style. Discover curated collections that define modern
+                    elegance.</p>
+            </div>
+            <div class="sidebar-section">
+                <h3>Quick Links</h3>
+                <ul class="sidebar-links">
+                    <li><a href="Product.html">All Collections</a></li>
+                    <li><a href="Product.html?category=mens-clothing">Men's Fashion</a></li>
+                    <li><a href="Product.html?category=womens-clothing">Women's Fashion</a></li>
+                    <li><a href="favorites.html">My Favorites</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <h3>Customer Service</h3>
+                <ul class="sidebar-links">
+                    <li><a href="Contact.html">Contact Us</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-section" id="authButtonsSidebar">
+                <button class="btn btn-outline" onclick="openLoginModal()"
+                    style="width: 100%; margin-bottom: 0.5rem;">Login</button>
+                <button class="btn btn-primary" onclick="openRegisterModal()" style="width: 100%;">Register</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>About Redwan</h4>
+                    <h4>About EverFit</h4>
                     <p style="color: var(--color-gray);">Premium fashion brand dedicated to bringing you the finest
                         clothing and accessories.</p>
                 </div>
@@ -340,7 +382,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Redwan Shop (Redoan Haq, ID:2220086) All Rights Reserved</p>
+                <p>&copy; 2025 EverFit (Redoan Haq, ID:2220086) All Rights Reserved</p>
             </div>
         </div>
     </footer>
