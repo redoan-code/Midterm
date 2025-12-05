@@ -1,48 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
-    <link rel="stylesheet" href="product_.css">
+    <meta name="description"
+        content="Shop premium clothing and accessories at Redwan Shop - Browse our exclusive collection">
+    <title>Shop - Redwan Premium Fashion</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Product Page Specific Styles */
+        .page-header {
+            padding: 120px 0 60px;
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .filter-section {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: var(--color-dark);
+        }
+
+        .filter-select {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--color-gray-light);
+            border-radius: var(--radius-md);
+            font-family: var(--font-primary);
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .product-grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .product-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 320px;
+            background: #f8f9fa;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+        }
+
+        .product-actions {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            opacity: 0;
+            transition: all var(--transition-base);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .product-card:hover .product-actions {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+        }
+
+        .action-btn:hover {
+            transform: scale(1.1);
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            font-size: var(--font-size-sm);
+            color: var(--color-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-dark);
+        }
+
+        .product-price {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--color-gray);
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+    </style>
 </head>
 
-<header>
-    <h1>Our Products</h1>
-</header>
 <body>
-    <nav>
-        <a href="Home.html">Home</a>
-        <a href="Product.html">Products</a>
-        <a href="Contact.html">Contact Us</a>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="Home.html" class="navbar-brand">
+                <div class="brand-logo-icon">EF</div>
+                <span>EverFit</span>
+            </a>>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="Home.html" class="navbar-link">Home</a></li>
+                <li class="dropdown">
+                    <div class="dropdown-toggle">Categories</div>
+                    <div class="dropdown-menu">
+                        <a href="Product.html?category=mens" class="dropdown-item">Men's Fashion</a>
+                        <a href="Product.html?category=womens" class="dropdown-item">Women's Fashion</a>
+                        <a href="Product.html?category=accessories" class="dropdown-item">Accessories</a>
+                        <a href="Product.html?category=footwear" class="dropdown-item">Footwear</a>
+                        <a href="Product.html?category=bags" class="dropdown-item">Bags & Luggage</a>
+                        <a href="Product.html?category=sale" class="dropdown-item">Sale Items</a>
+                    </div>
+                </li>
+                <li><a href="Product.html" class="navbar-link active">Shop</a></li>
+                <li><a href="Contact.html" class="navbar-link">Contact</a></li>
+                <li>
+                    <div class="cart-icon" id="cartIcon">
+                        🛒
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </nav>
-    <div class="product-grid">
-        <div class="product">
-            <img src="picture/cap.png" alt="cap">
-            <h3>CAP</h3>
-            <p>৳700</p>
-            <button onclick="showAlert('CAP', '৳700')">Buy Now</button>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Our Collection</h1>
+        <p>Discover premium fashion pieces curated just for you</p>
+    </div>
+
+    <!-- Main Content -->
+    <section class="section">
+        <div class="container">
+            <!-- Filters -->
+            <div class="filter-section">
+                <div class="filter-group">
+                    <span class="filter-label">Category:</span>
+                    <select class="filter-select" id="categoryFilter">
+                        <option value="all">All Products</option>
+                        <option value="accessories">Accessories</option>
+                        <option value="bags">Bags</option>
+                        <option value="footwear">Footwear</option>
+                        <option value="clothing">Clothing</option>
+                    </select>
+
+                    <span class="filter-label" style="margin-left: 2rem;">Sort By:</span>
+                    <select class="filter-select" id="sortFilter">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name">Name: A to Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid-container" id="productGrid">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-state-icon">🔍</div>
+                <h3>No products found</h3>
+                <p>Try adjusting your filters</p>
+            </div>
         </div>
-        <div class="product">
-            <img src="picture/bag.png" alt="bag">
-            <h3>BAG</h3>
-            <p>৳1500</p>
-            <button onclick="showAlert('BAG', '৳1500')">Buy Now</button>
-        </div>
-        <div class="product">
-            <img src="picture/shoes.png" alt="shoes">
-            <h3>SHOES</h3>
-            <p>৳2890</p>
-            <button onclick="showAlert('SHOES', '৳2890')">Buy Now</button>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2>Shopping Cart</h2>
+                <button class="cart-close" onclick="closeCartModal()">×</button>
+            </div>
+            <div class="cart-modal-body" id="cartModalBody">
+                <!-- Cart items will be inserted here -->
+            </div>
+            <div class="cart-modal-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="cart-total-amount" id="cartTotalAmount">৳0</span>
+                </div>
+                <button class="cart-checkout-btn" onclick="goToCheckout()">Proceed to Checkout</button>
+            </div>
         </div>
     </div>
-    <script>
-    function showAlert(productName, price) {
-        alert(`You have selected: ${productName}\nPrice: ${price}\nProceed to checkout!`);
-    }
-    </script>
-    <footer>
-        <p>&copy; 2025 (Redoan Haq, ID:2220086) All Rights Reserved</p>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Redwan</h4>
+                    <p style="color: var(--color-gray);">Premium fashion brand dedicated to bringing you the finest
+                        clothing and accessories.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="Home.html">Home</a></li>
+                        <li><a href="Product.html">Shop</a></li>
+                        <li><a href="Contact.html">Contact</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Pinterest</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Redwan Shop (Redoan Haq, ID:2220086) All Rights Reserved</p>
+            </div>
+        </div>
     </footer>
+
+    <script src="products-data.js"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>

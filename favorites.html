@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your Favorite Products - Redwan Shop">
+    <title>My Favorites - Redwan Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="navbar-container">
+            <button class="mobile-menu-toggle" onclick="openSidebar()"
+                style="background: none; border: none; font-size: 1.5rem; cursor: pointer; margin-right: 1rem; display: flex; flex-direction: column; gap: 4px;">
+                <span style="width: 25px; height: 3px; background: var(--color-dark); border-radius: 2px;"></span>
+                <span style="width: 25px; height: 3px; background: var(--color-dark); border-radius: 2px;"></span>
+                <span style="width: 25px; height: 3px; background: var(--color-dark); border-radius: 2px;"></span>
+            </button>
+
+            <a href="Home.html" class="navbar-brand">
+                <div class="brand-logo-icon">EF</div>
+                <span>EverFit</span>
+            </a>
+
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="Home.html" class="navbar-link">Home</a></li>
+                <li class="dropdown">
+                    <div class="dropdown-toggle">Categories</div>
+                    <div class="dropdown-menu">
+                        <a href="Product.html?category=mens-clothing" class="dropdown-item">Men's Clothing</a>
+                        <a href="Product.html?category=womens-clothing" class="dropdown-item">Women's Clothing</a>
+                        <a href="Product.html?category=accessories" class="dropdown-item">Accessories</a>
+                        <a href="Product.html?category=footwear" class="dropdown-item">Footwear</a>
+                        <a href="Product.html?category=bags" class="dropdown-item">Bags</a>
+                        <a href="Product.html?category=jewelry" class="dropdown-item">Jewelry</a>
+                    </div>
+                </li>
+                <li><a href="Product.html" class="navbar-link">Shop</a></li>
+                <li><a href="Contact.html" class="navbar-link">Contact</a></li>
+
+                <li class="search-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
+                    <span class="search-icon">🔍</span>
+                    <div class="search-results" id="searchResults"></div>
+                </li>
+
+                <li>
+                    <div class="favorites-icon" onclick="window.location.href='favorites.html'">
+                        ❤️
+                        <span class="favorites-count" id="favoritesCount" style="display: none;">0</span>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="cart-icon" id="cartIcon">
+                        🛒
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </li>
+
+                <li id="authButtons" style="display: flex; gap: 0.5rem;">
+                    <button class="btn btn-secondary" onclick="openLoginModal()"
+                        style="padding: 0.5rem 1rem; font-size: 0.875rem;">Login</button>
+                    <button class="btn btn-primary" onclick="openRegisterModal()"
+                        style="padding: 0.5rem 1rem; font-size: 0.875rem;">Register</button>
+                </li>
+
+                <li id="userProfile" style="display: none; position: relative;">
+                    <div class="user-profile">
+                        <div class="user-avatar" id="userAvatar">U</div>
+                        <span id="userName">User</span>
+                        <div class="user-dropdown">
+                            <a href="#" class="user-dropdown-item">My Profile</a>
+                            <a href="#" class="user-dropdown-item">My Orders</a>
+                            <a href="favorites.html" class="user-dropdown-item">My Favorites</a>
+                            <a href="#" class="user-dropdown-item" onclick="logout()">Logout</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Favorites Content -->
+    <div style="max-width: 1400px; margin: 0 auto; padding: 120px var(--spacing-xl) var(--spacing-4xl);">
+        <div class="section-header">
+            <h1 class="section-title">My Favorites ❤️</h1>
+            <p class="section-subtitle">Your curated collection of favorite items</p>
+        </div>
+
+        <!-- Favorites Grid -->
+        <div class="favorites-grid" id="favoritesGrid"></div>
+
+        <!-- Empty State -->
+        <div class="favorites-empty" id="favoritesEmpty" style="display: none;">
+            <div class="favorites-empty-icon">💔</div>
+            <h2>No favorites yet</h2>
+            <p>Start adding products to your favorites by clicking the heart icon!</p>
+            <a href="Product.html" class="btn btn-primary" style="margin-top: var(--spacing-xl);">Browse Products</a>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>EverFit</h2>
+            <button class="sidebar-close" onclick="closeSidebar()">×</button>
+        </div>
+        <div class="sidebar-content">
+            <div class="brand-info">
+                <h4>About Redwan</h4>
+                <p>Your premier destination for premium fashion.</p>
+            </div>
+            <div class="sidebar-section">
+                <h3>Collections</h3>
+                <ul class="sidebar-links">
+                    <li><a href="Product.html?category=mens-clothing">👔 Men's Clothing</a></li>
+                    <li><a href="Product.html?category=womens-clothing">👗 Women's Clothing</a></li>
+                    <li><a href="Product.html?category=accessories">🎩 Accessories</a></li>
+                    <li><a href="Product.html?category=footwear">👟 Footwear</a></li>
+                    <li><a href="Product.html?category=bags">👜 Bags</a></li>
+                    <li><a href="Product.html?category=jewelry">💎 Jewelry</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modals -->
+    <div class="auth-modal" id="loginModal">
+        <div class="auth-modal-content">
+            <div class="auth-modal-header">
+                <h2>Welcome Back!</h2>
+            </div>
+            <div class="auth-modal-body">
+                <form id="loginForm">
+                    <div class="auth-form-group">
+                        <label class="auth-form-label">Email Address</label>
+                        <input type="email" id="loginEmail" class="auth-form-input" required>
+                    </div>
+                    <div class="auth-form-group">
+                        <label class="auth-form-label">Password</label>
+                        <input type="password" id="loginPassword" class="auth-form-input" required>
+                    </div>
+                    <button type="submit" class="auth-submit-btn">Login</button>
+                </form>
+            </div>
+            <div class="auth-footer">
+                Don't have an account? <a href="#" onclick="switchToRegister()">Register</a>
+                <br><br><a href="#" onclick="closeLoginModal()">Close</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="auth-modal" id="registerModal">
+        <div class="auth-modal-content">
+            <div class="auth-modal-header">
+                <h2>Create Account</h2>
+            </div>
+            <div class="auth-modal-body">
+                <form id="registerForm">
+                    <div class="auth-form-group">
+                        <label class="auth-form-label">Full Name</label>
+                        <input type="text" id="registerName" class="auth-form-input" required>
+                    </div>
+                    <div class="auth-form-group">
+                        <label class="auth-form-label">Email</label>
+                        <input type="email" id="registerEmail" class="auth-form-input" required>
+                    </div>
+                    <div class="auth-form-group">
+                        <label class="auth-form-label">Password</label>
+                        <input type="password" id="registerPassword" class="auth-form-input" required>
+                    </div>
+                    <div class="auth-form-group">
+                        <label class="auth-form-label">Confirm Password</label>
+                        <input type="password" id="registerConfirmPassword" class="auth-form-input" required>
+                    </div>
+                    <button type="submit" class="auth-submit-btn">Create Account</button>
+                </form>
+            </div>
+            <div class="auth-footer">
+                Already have an account? <a href="#" onclick="switchToLogin()">Login</a>
+                <br><br><a href="#" onclick="closeRegisterModal()">Close</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2>Shopping Cart</h2>
+                <button class="cart-close" onclick="closeCartModal()">×</button>
+            </div>
+            <div class="cart-modal-body" id="cartModalBody"></div>
+            <div class="cart-modal-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="cart-total-amount" id="cartTotalAmount">৳0</span>
+                </div>
+                <button class="cart-checkout-btn" onclick="goToCheckout()">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Redwan</h4>
+                    <p style="color: var(--color-gray);">Premium fashion brand dedicated to bringing you the finest
+                        clothing and accessories.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="Home.html">Home</a></li>
+                        <li><a href="Product.html">Shop</a></li>
+                        <li><a href="Contact.html">Contact</a></li>
+                        <li><a href="favorites.html">Favorites</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Pinterest</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Redwan Shop (Redoan Haq, ID:2220086) All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="products-data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

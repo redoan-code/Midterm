@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Product Details - Redwan Shop">
+    <title>Product Details - Redwan Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="navbar-container">
+            <a href="Home.html" class="navbar-brand">
+                <div class="brand-logo-icon">EF</div>
+                <span>EverFit</span>
+            </a>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="Home.html" class="navbar-link">Home</a></li>
+                <li class="dropdown">
+                    <div class="dropdown-toggle">Categories</div>
+                    <div class="dropdown-menu">
+                        <a href="Product.html?category=mens" class="dropdown-item">Men's Fashion</a>
+                        <a href="Product.html?category=womens" class="dropdown-item">Women's Fashion</a>
+                        <a href="Product.html?category=accessories" class="dropdown-item">Accessories</a>
+                        <a href="Product.html?category=footwear" class="dropdown-item">Footwear</a>
+                        <a href="Product.html?category=bags" class="dropdown-item">Bags & Luggage</a>
+                        <a href="Product.html?category=sale" class="dropdown-item">Sale Items</a>
+                    </div>
+                </li>
+                <li><a href="Product.html" class="navbar-link">Shop</a></li>
+                <li><a href="Contact.html" class="navbar-link">Contact</a></li>
+                <li>
+                    <div class="cart-icon" id="cartIcon">
+                        🛒
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Detail -->
+    <div class="product-detail-container">
+        <div class="product-detail-grid">
+            <!-- Product Gallery -->
+            <div class="product-gallery">
+                <img src="picture/cap.png" alt="Product" class="product-main-image" id="mainImage">
+                <div class="product-thumbnails">
+                    <img src="picture/cap.png" alt="Thumbnail 1" class="product-thumbnail active"
+                        onclick="changeMainImage(this)">
+                    <img src="picture/bag.png" alt="Thumbnail 2" class="product-thumbnail"
+                        onclick="changeMainImage(this)">
+                    <img src="picture/shoes.png" alt="Thumbnail 3" class="product-thumbnail"
+                        onclick="changeMainImage(this)">
+                    <img src="picture/store.png" alt="Thumbnail 4" class="product-thumbnail"
+                        onclick="changeMainImage(this)">
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="product-info-section">
+                <span class="product-category-badge" id="productCategory">Accessories</span>
+                <h1 class="product-detail-title" id="productTitle">Designer Cap</h1>
+
+                <div class="product-rating">
+                    <div class="stars">★★★★★</div>
+                    <span class="rating-count">(4.8 / 5.0 - 127 reviews)</span>
+                </div>
+
+                <div class="product-detail-price" id="productPrice">৳700</div>
+
+                <p class="product-description" id="productDescription">
+                    Premium designer cap crafted from high-quality materials. Features adjustable strap for perfect fit,
+                    breathable fabric for all-day comfort, and timeless design that complements any outfit. Perfect for
+                    casual wear or outdoor activities.
+                </p>
+
+                <!-- Size Options -->
+                <div class="product-options">
+                    <div class="option-group">
+                        <label class="option-label">Size:</label>
+                        <div class="option-buttons">
+                            <button class="option-btn selected">One Size</button>
+                        </div>
+                    </div>
+
+                    <!-- Color Options -->
+                    <div class="option-group">
+                        <label class="option-label">Color:</label>
+                        <div class="option-buttons">
+                            <button class="option-btn selected">Black</button>
+                            <button class="option-btn">Navy</button>
+                            <button class="option-btn">Gray</button>
+                            <button class="option-btn">White</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quantity Selector -->
+                <div class="quantity-selector">
+                    <label class="option-label">Quantity:</label>
+                    <div class="quantity-controls">
+                        <button class="qty-btn" onclick="decrementQty()">-</button>
+                        <span class="qty-display" id="qtyDisplay">1</span>
+                        <button class="qty-btn" onclick="incrementQty()">+</button>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="product-actions">
+                    <button class="add-to-cart-large" onclick="addToCartFromDetail()">Add to Cart</button>
+                    <button class="wishlist-btn">❤️</button>
+                </div>
+
+                <!-- Product Details -->
+                <div
+                    style="border-top: 2px solid var(--color-gray-light); padding-top: var(--spacing-xl); margin-top: var(--spacing-xl);">
+                    <h3>Product Details</h3>
+                    <ul style="color: var(--color-gray); line-height: 2;">
+                        <li><strong>SKU:</strong> RW-CAP-001</li>
+                        <li><strong>Material:</strong> 100% Cotton</li>
+                        <li><strong>Care:</strong> Hand wash cold, air dry</li>
+                        <li><strong>Availability:</strong> <span style="color: var(--color-success);">In Stock</span>
+                        </li>
+                        <li><strong>Shipping:</strong> Free shipping on orders over ৳2000</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="reviews-section">
+            <div class="reviews-header">
+                <h2>Customer Reviews</h2>
+                <button class="write-review-btn" onclick="alert('Review form would open here')">Write a Review</button>
+            </div>
+
+            <!-- Review Cards -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        <h4>Sarah Johnson</h4>
+                        <p class="review-date">December 1, 2025</p>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+                <p class="review-text">
+                    Absolutely love this cap! The quality is outstanding and it fits perfectly. The material is soft and
+                    breathable.
+                    Highly recommend for anyone looking for a stylish and comfortable cap.
+                </p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        <h4>Michael Chen</h4>
+                        <p class="review-date">November 28, 2025</p>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                </div>
+                <p class="review-text">
+                    Great product! The design is sleek and modern. I've received many compliments. The adjustable strap
+                    makes it
+                    easy to get the perfect fit. Worth every penny!
+                </p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        <h4>Emily Rodriguez</h4>
+                        <p class="review-date">November 25, 2025</p>
+                    </div>
+                    <div class="review-stars">★★★★☆</div>
+                </div>
+                <p class="review-text">
+                    Very nice cap with excellent quality. The only reason I'm giving 4 stars instead of 5 is that I wish
+                    it came
+                    in more color options. Otherwise, it's perfect!
+                </p>
+            </div>
+        </div>
+
+        <!-- Related Products -->
+        <div class="related-products">
+            <h2 style="margin-bottom: var(--spacing-2xl);">You May Also Like</h2>
+            <div class="related-products-grid">
+                <div class="card">
+                    <div style="overflow: hidden;">
+                        <img src="picture/bag.png" alt="Related Product" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Luxury Bag</h4>
+                        <p class="card-text" style="font-weight: 600; color: var(--color-primary);">৳1500</p>
+                        <a href="product-detail.html?id=2" class="btn btn-secondary">View Details</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="overflow: hidden;">
+                        <img src="picture/shoes.png" alt="Related Product" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Premium Shoes</h4>
+                        <p class="card-text" style="font-weight: 600; color: var(--color-primary);">৳2890</p>
+                        <a href="product-detail.html?id=3" class="btn btn-secondary">View Details</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="overflow: hidden;">
+                        <img src="picture/cap.png" alt="Related Product" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Classic Cap</h4>
+                        <p class="card-text" style="font-weight: 600; color: var(--color-primary);">৳650</p>
+                        <a href="product-detail.html?id=4" class="btn btn-secondary">View Details</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="overflow: hidden;">
+                        <img src="picture/bag.png" alt="Related Product" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">Vintage Bag</h4>
+                        <p class="card-text" style="font-weight: 600; color: var(--color-primary);">৳1800</p>
+                        <a href="product-detail.html?id=5" class="btn btn-secondary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2>Shopping Cart</h2>
+                <button class="cart-close" onclick="closeCartModal()">×</button>
+            </div>
+            <div class="cart-modal-body" id="cartModalBody">
+                <!-- Cart items will be inserted here -->
+            </div>
+            <div class="cart-modal-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span class="cart-total-amount" id="cartTotalAmount">৳0</span>
+                </div>
+                <button class="cart-checkout-btn" onclick="goToCheckout()">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Redwan</h4>
+                    <p style="color: var(--color-gray);">Premium fashion brand dedicated to bringing you the finest
+                        clothing and accessories.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="Home.html">Home</a></li>
+                        <li><a href="Product.html">Shop</a></li>
+                        <li><a href="Contact.html">Contact</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Pinterest</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Redwan Shop (Redoan Haq, ID:2220086) All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="products-data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
