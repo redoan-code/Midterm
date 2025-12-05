@@ -723,7 +723,14 @@ function filterAndSortProducts() {
 
     // Reset to page 1 when filtering
     currentPage = 1;
-    renderProductsWithPagination(filteredProducts);
+
+    // Check if pagination container exists (Product.html)
+    const paginationContainer = document.getElementById('pagination');
+    if (paginationContainer) {
+        renderProductsWithPagination(filteredProducts);
+    } else {
+        renderProducts(filteredProducts);
+    }
 }
 
 
@@ -889,6 +896,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname.includes('favorites.html')) {
         renderFavorites();
     }
+
+    // Initialize Product page with pagination
+    if (window.location.pathname.includes('Product.html')) {
+        // Render all products with pagination on initial load
+        renderProductsWithPagination(products);
+    }
+
 
     const cartIcon = document.getElementById('cartIcon');
     if (cartIcon) {
